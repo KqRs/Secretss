@@ -64,7 +64,7 @@ Deliverytab.newToggle("Сбор Булочек", "Работает только 
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Bun do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
@@ -93,7 +93,7 @@ Deliverytab.newToggle("Сбор Салата", "Работает только е
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Lettuce do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
@@ -122,7 +122,7 @@ Deliverytab.newToggle("Сбор Помидора", "Работает тольк�
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Tomato do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
@@ -151,7 +151,7 @@ Deliverytab.newToggle("Сбор Лука", "Работает только есл
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Onion do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
@@ -180,7 +180,7 @@ Deliverytab.newToggle("Сбор Огурца", "Работает только е
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Pickle do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
@@ -209,7 +209,7 @@ Deliverytab.newToggle("Сбор Сыра", "Работает только есл
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Cheese do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
@@ -238,7 +238,7 @@ Deliverytab.newToggle("Сбор Котлет", "Работает только е
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Patty do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
+            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
                 wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
                 repeat
