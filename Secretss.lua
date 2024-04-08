@@ -262,8 +262,19 @@ Deliverytab.newToggle("Сбор Котлет", "Работает только е
     end
 end)
 
-
-
+function Holding()
+    for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v:IsA("ProximityPrompt") then
+            v["HoldDuration"] = 0
+        end
+    end
+    
+    
+    game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(v)
+        v["HoldDuration"] = 0
+    end)
+end
+Holding()
 
 
 
@@ -654,10 +665,10 @@ function ClearTable()
                 [1] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("TransitionJ"),
                 [2] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("DisposalB")
             }
-            wait(.5)
+            wait(1)
             game:GetService("ReplicatedStorage"):WaitForChild("Kitchen"):WaitForChild("Events"):WaitForChild("CombineObjects"):FireServer(unpack(args))
         
-            wait(.5)
+            wait(1)
             local args = {
                 [1] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("TransitionT"),
                 [2] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("DisposalB")
@@ -665,7 +676,7 @@ function ClearTable()
         
             game:GetService("ReplicatedStorage"):WaitForChild("Kitchen"):WaitForChild("Events"):WaitForChild("CombineObjects"):FireServer(unpack(args))
         
-            wait(.5)
+            wait(1)
             local args = {
                 [1] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("TransitionI"),
                 [2] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("DisposalB")
@@ -673,7 +684,7 @@ function ClearTable()
         
             game:GetService("ReplicatedStorage"):WaitForChild("Kitchen"):WaitForChild("Events"):WaitForChild("CombineObjects"):FireServer(unpack(args))
         
-            wait(.5)
+            wait(1)
             local args = {
                 [1] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("TransitionS"),
                 [2] = workspace:WaitForChild("Kitchen"):WaitForChild("KitchenObjects"):WaitForChild("DisposalB")
