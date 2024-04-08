@@ -80,7 +80,7 @@ Deliverytab.newToggle("Сбор Булочек", "Работает только 
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Bun.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
@@ -109,7 +109,7 @@ Deliverytab.newToggle("Сбор Салата", "Работает только е
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Lettuce.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
@@ -138,7 +138,7 @@ Deliverytab.newToggle("Сбор Помидора", "Работает тольк�
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Tomato.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
@@ -167,7 +167,7 @@ Deliverytab.newToggle("Сбор Лука", "Работает только есл
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Onion.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
@@ -196,7 +196,7 @@ Deliverytab.newToggle("Сбор Огурца", "Работает только е
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Pickle.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
@@ -225,7 +225,7 @@ Deliverytab.newToggle("Сбор Сыра", "Работает только есл
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Cheese.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
@@ -254,7 +254,7 @@ Deliverytab.newToggle("Сбор Котлет", "Работает только е
                 VirtualInputManager:SendKeyEvent(true, "E", false, game)
                 wait(.2)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Patty.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1.8)
+                wait(1)
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
                 wait(1)
             end
