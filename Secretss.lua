@@ -64,26 +64,15 @@ Deliverytab.newToggle("Сбор Булочек", "Работает только 
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Bun do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Bun.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Bun.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Bun.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Bun.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
@@ -93,26 +82,15 @@ Deliverytab.newToggle("Сбор Салата", "Работает только е
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Lettuce do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Lettuce.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Lettuce.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Lettuce.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Lettuce.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
@@ -122,26 +100,15 @@ Deliverytab.newToggle("Сбор Помидора", "Работает тольк�
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Tomato do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Tomato.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Tomato.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Tomato.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Tomato.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
@@ -151,26 +118,15 @@ Deliverytab.newToggle("Сбор Лука", "Работает только есл
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Onion do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Onion.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Onion.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Onion.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Onion.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
@@ -180,26 +136,15 @@ Deliverytab.newToggle("Сбор Огурца", "Работает только е
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Pickle do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Pickle.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Pickle.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Pickle.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Pickle.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
@@ -209,26 +154,15 @@ Deliverytab.newToggle("Сбор Сыра", "Работает только есл
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Cheese do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Cheese.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Cheese.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Cheese.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Cheese.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
@@ -238,26 +172,15 @@ Deliverytab.newToggle("Сбор Котлет", "Работает только е
     local VirtualInputManager = game:GetService("VirtualInputManager")
     if toggleState then
         while getgenv().Patty do
-            if energe.Text == "0/30" or energe.Text == "1/30" or energe.Text == "2/30" or energe.Text == "3/30" or energe.Text == "4/30" or energe.Text == "0/40" or energe.Text == "1/40" or energe.Text == "2/40" or energe.Text == "3/40" or energe.Text == "4/40" then 
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CartTrack.ScriptParts.PromptPart.CFrame
-                repeat
-                    wait(0.2)
-                    VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true
-                repeat
-                    wait(3)
-                until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == false
-            else
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Patty.CFrame + Vector3.new(3,5,9)
-                wait(0.5)
-                VirtualInputManager:SendKeyEvent(true, "E", false, game)
-                wait(.2)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Patty.Spawnpoint.CFrame + Vector3.new(0,-14,0)
-                wait(1)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
-                wait(1)
-            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Patty.CFrame + Vector3.new(3,5,9)
+            wait(0.5)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            VirtualInputManager:SendKeyEvent(true, "E", false, game)
+            wait(.2)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Supply.GenerationPrompts.Patty.Spawnpoint.CFrame + Vector3.new(0,-14,0)
+            wait(1.4)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1628.72864, 387.527679, 1147.60547, 0.99978435, -5.05287652e-08, -0.0207671076, 5.07759381e-08, 1, 1.13748051e-08, 0.0207671076, -1.24268213e-08, 0.99978435) + Vector3.new(0,10,0)
+            wait(0.7)
         end
     end
 end)
