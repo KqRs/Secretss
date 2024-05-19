@@ -27,7 +27,7 @@ if game.PlaceId == 8737899170 then
     end
 
     local function ReadyTrade()
-        wait(4.5)
+        wait(3.8)
         local args = {
             [1] = GetTradeID(),
             [2] = true,
