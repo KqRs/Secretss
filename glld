@@ -4,7 +4,11 @@ wait(5)
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
-        --{Pet = "Wireframe Dog", Patern = all, DecrementBy = 100}
+        {Pet = "Police Dog", Patern = 2, DecrementBy = 28},
+        {Pet = "Prison Cow", Patern = all},
+        {Pet = "Prison Axolotl", Patern = 2, DecrementBy = 100},
+        {Pet = "Detectile Cat", Patern = all}
+
     }
     getgenv().ItemToTrade = {
         "Mini Pinata",
