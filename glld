@@ -1,6 +1,6 @@
 --AUTO TRADE
+wait(15)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
-wait(5)
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
