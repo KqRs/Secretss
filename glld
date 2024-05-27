@@ -3,11 +3,11 @@ wait(15)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
-    getgenv().PetToTrade = {
+    getgenv().PetToTrade = {--[[
         {Pet = "Police Dog", Patern = 2, DecrementBy = 28},
         {Pet = "Prison Cow", Patern = all},
         {Pet = "Prison Axolotl", Patern = 2, DecrementBy = 100},
-        {Pet = "Detectile Cat", Patern = all}
+        {Pet = "Detectile Cat", Patern = all}]]
 
     }
     getgenv().ItemToTrade = {
