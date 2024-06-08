@@ -1,5 +1,5 @@
 --AUTO TRADE
-wait(15)
+wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
