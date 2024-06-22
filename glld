@@ -35,7 +35,10 @@ if game.PlaceId == 8737899170 then
         "Arcade Token",
         "Hype Egg",
         "Global Event Gift",
-        "Seashell"
+        "Seashell",
+        "Hacker Key",
+        "Prison Key",
+        "Golden Prison Key"
 }
 
     local library = require(game.ReplicatedStorage.Library)
