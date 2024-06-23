@@ -1,5 +1,5 @@
 -- check if pet stack by nagib
-wait(60)
+wait(100)
 repeat
     task.wait()
 until game:IsLoaded()
