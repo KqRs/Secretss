@@ -1,7 +1,6 @@
 --AUTO TRADE + NEW EVENT CHECK STACK
 print("execut")
 wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 
 
 
