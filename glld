@@ -6,8 +6,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-9
 
 if game.PlaceId == 8737899170 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/Secretss/main/other",true))()
-end
-
-if game.PlaceId == 17503543197 then
+elseif game.PlaceId == 17503543197 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/Secretss/main/stack",true))()
 end
