@@ -1,0 +1,55 @@
+-- check if pet stack by nagib
+wait(60)
+repeat
+    task.wait()
+until game:IsLoaded()
+
+repeat
+    task.wait()
+until game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+
+repeat
+    task.wait()
+until game:GetService("Workspace").__THINGS and game:GetService("Workspace").__DEBRIS
+
+print("Loaded Game")
+
+local library = require(game.ReplicatedStorage.Library)
+local save = library.Save.Get()
+local inventory = library.Save.Get().Inventory
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local checkInterval = 30
+
+local function GetCoinCount()
+    for i, v in pairs(save.Inventory.Currency) do
+        if v.id == 'Diamonds' then
+            return v._am
+        end
+    end
+end
+
+local lastCoinCount = GetCoinCount()
+local checking = true
+
+local function CheckIfStuck()
+    if not checking then return end
+    
+    local CurrentCoinCount = GetCoinCount()
+    
+    if CurrentCoinCount == lastCoinCount then
+        player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["__THINGS"].Instances.GoodEvilInstance.Teleports.Leave.CFrame
+        print("yep")
+    else
+        print("Pets are farming correctly.")
+        checking = false
+    end
+end
+
+while checking do
+    wait(checkInterval)
+    CheckIfStuck()
+end
+
+print("Stopped checking because pets are farming correctly.")
