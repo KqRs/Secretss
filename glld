@@ -1,6 +1,6 @@
 --AUTO TRADE + NEW EVENT CHECK STACK
-print("execut")
 wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 
 
 
@@ -11,8 +11,8 @@ else
 end
 
 
-if game.PlaceId == 17503543197 then
+--[[if game.PlaceId == 17503543197 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/Secretss/main/stack",true))()
 else
     wait(1)
-end
+end]]
