@@ -39,7 +39,9 @@ local function CheckIfStuck()
     local CurrentCoinCount = GetCoinCount()
     
     if CurrentCoinCount == lastCoinCount then
-        player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["__THINGS"].Instances.GoodEvilInstance.Teleports.Leave.CFrame
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Pets_ToggleFavoriteMode"):FireServer()
+        wait(3)
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Pets_ToggleFavoriteMode"):FireServer()
         print("yep")
     else
         print("Pets are farming correctly.")
