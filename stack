@@ -1,19 +1,5 @@
 -- check if pet stack by nagib
 wait(100)
-repeat
-    task.wait()
-until game:IsLoaded()
-
-repeat
-    task.wait()
-until game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-
-repeat
-    task.wait()
-until game:GetService("Workspace").__THINGS and game:GetService("Workspace").__DEBRIS
-
-print("Loaded Game")
-
 local library = require(game.ReplicatedStorage.Library)
 local save = library.Save.Get()
 local inventory = library.Save.Get().Inventory
