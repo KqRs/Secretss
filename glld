@@ -1,6 +1,17 @@
 --AUTO TRADE + NEW EVENT CHECK STACK
-wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
+repeat
+    task.wait()
+until game:IsLoaded()
+
+repeat
+    task.wait()
+until game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+
+repeat
+    task.wait()
+until game:GetService("Workspace").__THINGS and game:GetService("Workspace").__DEBRIS
+
+print("Loaded Game")
 
 
 
