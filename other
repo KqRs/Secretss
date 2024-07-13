@@ -36,8 +36,10 @@ if game.PlaceId == 8737899170 then
         "Hype Egg",
         "Global Event Gift",
         "Seashell",
-        "Ultra Lucky Tile Boost",
-        "Lucky Tile Boost"
+        "Ultra Lucky Tile",
+        "Lucky Tile",
+        "Good vs Evil Gift",
+        "Rave Gift"
 }
 
     local library = require(game.ReplicatedStorage.Library)
