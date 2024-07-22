@@ -5,7 +5,7 @@ if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
         {Pet = "Elegant Eagle", Patern = all, DecrementBy = 0},
-        {Pet = "Lune Axolotl", Patern = all, DecrementBy = 0}
+        {Pet = "Luxe Axolotl", Patern = all, DecrementBy = 0}
         --{Pet = "Pineapple Monkey", Patern = 2, DecrementBy = 0}
 
 
