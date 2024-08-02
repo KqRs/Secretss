@@ -1,5 +1,6 @@
 --AUTO TRADE + NEW EVENT CHECK STACK
 wait(20)
+print("Load")
 
 
 
