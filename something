@@ -10,6 +10,12 @@ local save = library.Get()
 local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
 local request = http_request
 
+local args = {
+    [1] = "Default"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("ForeverPacks: Claim Free"):InvokeServer(unpack(args))
+
 local function sendToDiscord(playerName, petName)
     local embeds = {
         {
