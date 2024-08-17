@@ -126,7 +126,7 @@ local function onItemsUpdate(player, pets)
             if pet and pet.id then
                 local petData = const.Pets[pet.id]
 
-                if petData and petData.huge then
+                if petData and petData.huge or petData.titanic then
                     wait(0.5)
                     local args = {
                         [1] = "Octoptys",
