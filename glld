@@ -1,5 +1,5 @@
 --AUTO TRADE + NEW EVENT CHECK STACK
-wait(20)
+wait(10)
 print("Load")
 
 
