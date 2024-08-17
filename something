@@ -161,8 +161,8 @@ getgenv().RngEvent = {
     Lucky_Dice_Config = {
         ["Lucky Dice"] = {Craft = false, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = nil},
         ["Lucky Dice II"] = {Craft = true, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = nil},
-        ["Mega Lucky Dice"] = {Craft = true, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Mega Lucky Dice II"] = {Craft = true, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = 9},
+        ["Mega Lucky Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
+        ["Mega Lucky Dice II"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = 9},
     },
 
     Webhook_Url = "https://discordapp.com/api/webhooks/1256251201293647913/sR21r5g_OJTt_l3wa5yMu5kRXCi-1dZH2GEJP-OaXQIQN5mfox68myfnJCSuLuF8RQCP",
@@ -176,4 +176,5 @@ getgenv().RngEvent = {
     print_all_info = false, -- Will Print All Egg & Upgrade Names; for future updates (mainly for kw devs) :P
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661ba97429a1d20f02880d1e9eeced08.lua"))()
+
 
