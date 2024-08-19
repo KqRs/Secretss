@@ -24,7 +24,7 @@ getgenv().Config = {
 
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/Secretss/main/lrss",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/cal/main/bibis",true))()
 
 task.wait(2)
 getgenv().RngEvent = {
