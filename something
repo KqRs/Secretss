@@ -1,4 +1,11 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
+repeat
+    task.wait()
+until game:IsLoaded()
+
+repeat
+    task.wait()
+until game.PlaceId ~= nil
+print("[CLIENT] Loaded Game")
 wait(45)
 
 
