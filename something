@@ -34,11 +34,11 @@ getgenv().RngEvent = {
     Visible_Rolling = false,
 
     Selected_Upgrades = {"RNGHugeLuck", "RNGEggLuck", "RNGHatchSpeed", "RNGBonusLuck", "RNGExtraEgg"},
-    AutoUpgrades_Enabled = false,
+    AutoUpgrades_Enabled = true,
     AutoMerchant_Enabled = true,
     AutoSellPets_Enabled = true,
     AutoSell_OnlyEventPets = false,
-    AutoBreakChests_Enabled = true,
+    AutoBreakChests_Enabled = false,
     Lucky_Dice_Enabled = true,
     Lucky_Dice_Config = {
         ["Fire Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
