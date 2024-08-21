@@ -44,7 +44,7 @@ getgenv().RngEvent = {
     AutoMerchant_Enabled = true,
     AutoSellPets_Enabled = true,
     AutoSell_OnlyEventPets = false,
-    AutoBreakChests_Enabled = false,
+    AutoBreakChests_Enabled = true,
     Lucky_Dice_Enabled = true,
     Lucky_Dice_Config = {
         ["Fire Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
@@ -61,7 +61,7 @@ getgenv().RngEvent = {
     Huge_Mail_Enabled = false,
 
     fps_boost = true,
-    fps_boost2 = false,
+    fps_boost2 = true,
     gui_stats_enabled = true,
     print_all_info = false,
 }
