@@ -43,10 +43,10 @@ getgenv().RngEvent = {
     Lucky_Dice_Config = {
         ["Fire Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
         ["Lucky Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Lucky Dice II"] = {Craft = true, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Lucky Dice III"] = {Craft = true, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Mega Lucky Dice"] = {Craft = true, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Mega Lucky Dice II"] = {Craft = true, Use = true, Only_Use_If_Not_Active = true, Only_Use_If_Rolls_Ends_In = 9},
+        ["Lucky Dice II"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
+        ["Lucky Dice III"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
+        ["Mega Lucky Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
+        ["Mega Lucky Dice II"] = {Craft = false, Use = true, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = 9},
     },
 
     Webhook_Url = "",
@@ -55,8 +55,11 @@ getgenv().RngEvent = {
     Huge_Mail_Enabled = false,
 
     fps_boost = true,
-    fps_boost2 = true,
+    fps_boost2 = false,
     gui_stats_enabled = true,
     print_all_info = false,
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661ba97429a1d20f02880d1e9eeced08.lua"))()
+
+task.wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/cal/main/rlsa",true))()
