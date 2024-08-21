@@ -6,7 +6,14 @@ repeat
     task.wait()
 until game.PlaceId ~= nil
 print("[CLIENT] Loaded Game")
-wait(45)
+task.wait(35)
+
+
+local ChatService = game:GetService("Chat")
+ChatService:Chat(game.Players.LocalPlayer.Character.HumanoidRootPart, "Chat disabled", Enum.ChatColor.Red)
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+task.wait(10)
+
 
 
 getgenv().Config = {
