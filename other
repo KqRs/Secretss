@@ -188,18 +188,16 @@ if game.PlaceId == 8737899170 then
     local function DepositItemInTrade()
         if save.Inventory.Misc ~= nil then
             for i,v in pairs(save.Inventory.Misc) do
-                if v._am ~= nil then
-                    for _, itemName in pairs(getgenv().ItemToTrade) do
-                        if v.id == itemName then
-                            wait(0.1)
-                            local args = {
-                                [1] = GetTradeID(),
-                                [2] = "Misc",
-                                [3] = i,
-                                [4] = v._am or 1
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                        end
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.1)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Misc",
+                            [3] = i,
+                            [4] = v._am or 1
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                     end
                 end
             end
@@ -210,18 +208,16 @@ if game.PlaceId == 8737899170 then
     local function DepositSeedInTrade()
         if save.Inventory.Seed ~= nil then
             for i,v in pairs(save.Inventory.Seed) do
-                if v._am ~= nil then
-                    for _, itemName in pairs(getgenv().ItemToTrade) do
-                        if v.id == itemName then
-                            wait(0.1)
-                            local args = {
-                                [1] = GetTradeID(),
-                                [2] = "Seed",
-                                [3] = i,
-                                [4] = v._am or 1
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                        end
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.1)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Seed",
+                            [3] = i,
+                            [4] = v._am or 1
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                     end
                 end
             end
@@ -231,18 +227,16 @@ if game.PlaceId == 8737899170 then
     local function DepositGiftInTrade()
         if save.Inventory.Lootbox ~= nil then
             for i,v in pairs(save.Inventory.Lootbox) do
-                if v._am ~= nil then
-                    for _, itemName in pairs(getgenv().ItemToTrade) do
-                        if v.id == itemName then
-                            wait(0.1)
-                            local args = {
-                                [1] = GetTradeID(),
-                                [2] = "Lootbox",
-                                [3] = i,
-                                [4] = v._am or 1
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                        end
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.1)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Lootbox",
+                            [3] = i,
+                            [4] = v._am or 1
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                     end
                 end
             end
@@ -252,23 +246,23 @@ if game.PlaceId == 8737899170 then
 
     local function DepositEggInTrade()
         if save.Inventory.Egg ~= nil then
-            for i,v in pairs(save.Inventory.Egg) do
-                if v._am ~= nil then
-                    for _, itemName in pairs(getgenv().ItemToTrade) do
-                        if v.id == itemName then
-                            wait(0.1)
-                            local args = {
-                                [1] = GetTradeID(),
-                                [2] = "Egg",
-                                [3] = i,
-                                [4] = v._am or 1
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
-                        end
+        for i,v in pairs(save.Inventory.Egg) do
+                for _, itemName in pairs(getgenv().ItemToTrade) do
+                    if v.id == itemName then
+                        wait(0.1)
+                        local args = {
+                            [1] = GetTradeID(),
+                            [2] = "Egg",
+                            [3] = i,
+                            [4] = v._am or 1
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
                     end
                 end
             end
+    
         end
+    
     end
 
     local function DepositDiamondsInTrade()
