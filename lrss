@@ -69,15 +69,16 @@ local function Event()
     task.wait(2)
 
 
-    pcall(function()
-        localPlayer2.Idled:Connect(function()
-            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-            task.wait(1)
-            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-        end)
-
+    for i, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+        v:Disable()
+    end
+    
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+       vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+       task.wait(1)
+       vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
-    task.wait(2)
 
     local replicatedStorage = game:GetService("ReplicatedStorage")
     local scriptEnv = require(replicatedStorage.Library.Client.EventUpgradeCmds)
@@ -365,3 +366,17 @@ if tostring(game.PlaceId) == tostring(currentPlaceId) then
     end)
     Webhook()
 end
+
+
+
+
+for i, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+    v:Disable()
+end
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   task.wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
