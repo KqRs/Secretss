@@ -7,10 +7,10 @@ repeat
 until game.PlaceId ~= nil
 task.wait(25)
 
+local Players2 = game:GetService("Players")
+local localPlayer2 = Players2.LocalPlayer
 
 local function Event()
-    local Players2 = game:GetService("Players")
-    local localPlayer2 = Players2.LocalPlayer
 
     -- Удаление моделей других игроков
     local function removeOtherPlayerModels()
@@ -38,9 +38,16 @@ local function Event()
     -- Выполняем удаление существующих моделей других игроков
     removeOtherPlayerModels()
 
+    task.wait(1)
 
+    pcall(function()
+        localPlayer2.Idled:Connect(function()
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            task.wait(1)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
 
-
+    end)
 
 
 
