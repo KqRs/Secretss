@@ -7,18 +7,6 @@ repeat
 until game.PlaceId ~= nil
 task.wait(20)
 
-if game.PlaceId ~= 84810042603306 then
-    local TeleportService = game:GetService("TeleportService")
-
-    -- Идентификатор актуального места (укажите правильное значение)
-    local currentPlaceId = 84810042603306 -- Замените на ваш PlaceId
-
-    -- Проверяем, находимся ли мы не в актуальном месте
-    if tostring(game.PlaceId) ~= tostring(currentPlaceId) then
-        -- Телепортируем на актуальный PlaceId
-        TeleportService:Teleport(currentPlaceId, game.Players.LocalPlayer)
-    end
-end
 
 local function Event()
     local Players2 = game:GetService("Players")
@@ -349,15 +337,17 @@ local function Webhook()
     end
 end
 
+
 local TeleportService = game:GetService("TeleportService")
-
-
 local currentPlaceId = 84810042603306
-
 
 if tostring(game.PlaceId) ~= tostring(currentPlaceId) then
     TeleportService:Teleport(currentPlaceId, game.Players.LocalPlayer)
 else
+    task.wait()
+end
+
+if tostring(game.PlaceId) == tostring(currentPlaceId) then
     Event()
     task.wait(10)
     task.delay(30,function()
