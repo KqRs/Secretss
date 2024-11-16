@@ -368,10 +368,3 @@ else
     end)
     Webhook()
 end
-
-
-local network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
-local function ClaimMail()
-    network:WaitForChild("Mailbox: Claim All"):InvokeServer()
-end
-ClaimMail()
