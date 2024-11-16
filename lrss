@@ -342,6 +342,7 @@ local TeleportService = game:GetService("TeleportService")
 local currentPlaceId = 84810042603306
 
 if tostring(game.PlaceId) ~= tostring(currentPlaceId) then
+    task.wait(20)
     TeleportService:Teleport(currentPlaceId, game.Players.LocalPlayer)
 else
     task.wait()
