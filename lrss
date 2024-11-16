@@ -38,18 +38,6 @@ local function Event()
     -- Выполняем удаление существующих моделей других игроков
     removeOtherPlayerModels()
 
-    task.wait(1)
-
-    pcall(function()
-        localPlayer2.Idled:Connect(function()
-            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-            task.wait(1)
-            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-        end)
-
-    end)
-
-
 
 
     task.wait(1)
@@ -78,8 +66,18 @@ local function Event()
     game:GetService("Players").LocalPlayer.PlayerScripts.RbxCharacterSounds:Destroy()
     task.wait()
     game:GetService("Players").LocalPlayer.PlayerScripts.PlayerModule:Destroy()
-    task.wait()
+    task.wait(2)
 
+
+    pcall(function()
+        localPlayer2.Idled:Connect(function()
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            task.wait(1)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+
+    end)
+    task.wait(2)
 
     local replicatedStorage = game:GetService("ReplicatedStorage")
     local scriptEnv = require(replicatedStorage.Library.Client.EventUpgradeCmds)
