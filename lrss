@@ -5,7 +5,7 @@ until game:IsLoaded()
 repeat
     task.wait(1)
 until game.PlaceId ~= nil
-task.wait(20)
+task.wait(10)
 
 
 local function Event()
