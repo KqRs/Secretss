@@ -65,7 +65,7 @@ local function Event()
         end
     end
     task.wait()
-    game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Core:Destroy()
+    --game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Core:Destroy()
     task.wait()
     game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs:Destroy()
     task.wait()
@@ -84,19 +84,7 @@ local function Event()
     game:GetService("Players").LocalPlayer.PlayerScripts.PlayerModule:Destroy()
     task.wait()
 
-    spawn(function()
-        task.wait(120)
-        for i, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
-            v:Disable()
-        end
-        
-        local vu = game:GetService("VirtualUser")
-        game:GetService("Players").LocalPlayer.Idled:Connect(function()
-           vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-           task.wait(1)
-           vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-        end)
-    end)
+
 
 
 
@@ -384,6 +372,20 @@ if tostring(game.PlaceId) == tostring(currentPlaceId) then
         end
         ClaimMail()
     end)
+    spawn(function()
+        task.wait(120)
+        for i, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+        
+        local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:Connect(function()
+           vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+           task.wait(1)
+           vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end)
     Webhook()
 end
+
 
