@@ -6,18 +6,7 @@ repeat
     task.wait()
 until game.PlaceId ~= nil
 
-if game.PlaceId ~= 84810042603306 then
-    local TeleportService = game:GetService("TeleportService")
 
-    -- Идентификатор актуального места (укажите правильное значение)
-    local currentPlaceId = 84810042603306 -- Замените на ваш PlaceId
-
-    -- Проверяем, находимся ли мы не в актуальном месте
-    if tostring(game.PlaceId) ~= tostring(currentPlaceId) then
-        -- Телепортируем на актуальный PlaceId
-        TeleportService:Teleport(currentPlaceId, game.Players.LocalPlayer)
-    end
-end
 
 local function Event()
     local Players2 = game:GetService("Players")
@@ -48,6 +37,7 @@ local function Event()
 
     -- Выполняем удаление существующих моделей других игроков
     removeOtherPlayerModels()
+
 
 
 
@@ -363,6 +353,7 @@ else
 end
 
 if tostring(game.PlaceId) == tostring(currentPlaceId) then
+    task.wait(60)
     Event()
     task.wait(10)
     task.delay(30,function()
