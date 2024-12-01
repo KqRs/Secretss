@@ -188,7 +188,7 @@ if game.PlaceId == 8737899170 then
     local function Depivent()
         if save.Inventory.Pet ~= nil then
             for id, pet in pairs(save.Inventory.Pet) do
-                if pet.id == "Pumpkin Spice Cat" or pet.id == "Corn Cat" then
+                if pet.id == "Autumn Teddy Bear" or pet.id == "Autumn Chest Mimic" then
                     local args = {
                         [1] = GetTradeID(),
                         [2] = "Pet",
