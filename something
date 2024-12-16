@@ -1,6 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Network = ReplicatedStorage:WaitForChild("Network")
-local Eggs_RequestPurchase = Network:WaitForChild("Eggs_RequestPurchase") -- RemoteFunction
+local CustomEggs_Hatch = Network:WaitForChild("CustomEggs_Hatch") -- RemoteFunction
 
 -- Создание GUI
 local ScreenGui = Instance.new("ScreenGui")
@@ -37,7 +37,7 @@ local function checkEggPurchase()
 
     mt.__namecall = function(self, ...)
         local method = getnamecallmethod()
-        if method == "InvokeServer" and self == Eggs_RequestPurchase then
+        if method == "InvokeServer" and self == CustomEggs_Hatch then
             local success = oldNamecall(self, ...) -- Выполняем оригинальный вызов
             if success == true then
                 successDetected = true
