@@ -46,6 +46,9 @@ if game.PlaceId == 8737899170 then
         "2024 X-Large Christmas Present",
         "2024 Gargantuan Christmas Present",
         "Snowflake Gift",
+        "Lockpick C",
+        "Lockpick A",
+        "Lockpick B",
 }
     local const = require(game.ReplicatedStorage.Library.Directory)
     local library = require(game.ReplicatedStorage.Library.Client.Save)
