@@ -37,7 +37,7 @@ local function checkEggPurchase()
 
     mt.__namecall = function(self, ...)
         local method = getnamecallmethod()
-        if method == "InvokeServer" and self == CustomEggs_Hatch then
+        if method == "InvokeServer" and self == Eggs_RequestPurchase then
             local success = oldNamecall(self, ...) -- Выполняем оригинальный вызов
             if success == true then
                 successDetected = true
