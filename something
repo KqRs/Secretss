@@ -1,6 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Network = ReplicatedStorage:WaitForChild("Network")
-local CustomEggs_Hatch = Network:WaitForChild("CustomEggs_Hatch") -- RemoteFunction
+local Eggs_RequestPurchase = Network:WaitForChild("Eggs_RequestPurchase") -- RemoteFunction
 
 -- Создание GUI
 local ScreenGui = Instance.new("ScreenGui")
